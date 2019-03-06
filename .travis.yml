@@ -2,19 +2,18 @@ sudo: false
 language: python
 matrix:
   include:
-    - python: "3.6"
-      env: LTD_MASON_BUILD=true
+  - python: '3.6'
+    env: LTD_MASON_BUILD=true
 install:
-  - pip install -r requirements.txt
-  - pip install "ltd-mason>=0.2,<0.3"
+- pip install -r requirements.txt
+- pip install "ltd-mason>=0.2,<0.3"
 script:
-  - sphinx-build -b html -a -n -d _build/doctree . _build/html
+- sphinx-build -b html -a -n -d _build/doctree . _build/html
 after_success:
-  - ltd-mason-travis --html-dir _build/html
+- ltd-mason-travis --html-dir _build/html
 env:
   global:
-    - LTD_MASON_BUILD=false  # disable builds in regular text matrix
-    - LTD_MASON_PRODUCT="dmtn-112"
-    # AWS and LTD Keeper credentials as encrypted secrets here
-    - secure: "UCsX32qqvujFR4xivXXIFSvaoUbP7bJy9PDwTyu5zJygVcyQhSCjwFJiAaLzqut4UOVD+yrNV2hf1VvaSSCpUne0aLOz2A8LGRyLm25VRSpC3VUgy+X+9fEeTfWJ+1NOpy2cN/ofZdKMC3S3TEjuGA8XnBa2hJWF6GWkzG73KEZO1uGpsljW7T+6lqgFiAiV9Vm7Fvvdib7O6bz9CqHfJwFMK3wl/xzXU5jW0UTskgCty582DfSsg5hxuYM4GmLOk182CLCPy/hAvj/3t6WqQ4hZZ2tBheXGABdPRe5ZcOEvOfT3srCPCxawkLaF75z57YEXZh8KtsrKucggLFUWeC1EevlIy1K7ZnkDB07ucgwfNiFSQG1q6yv7rYLK/2hvFDwpXkCYfq5OYoKjRp6lm8MocjZWjs94pfQJ7wV/rMJKtEXBFFGVNnfptMLcUHBEQugpkZrmN48n7PuKutoEEpc58YGHHi/gp2aIIC8ZwuphfSBWXc8/dfrA/LGO3bFJviwSS1Ehki5DRg8YLtuTomF+R97FNgWWPd8ATqxP8steTzLVby56hxlb2UBWyHldLyjLKpBYzPpfw9xYwkmgugsRexXGSujgz9wtbN5qTPFzJ2YVPKU9Jxl0C9XguFjsne8sERm8sLidrDOYPwPulxuIOG+bxvC0UB0tR/rnISo="
-    - secure: "mQ7ddc9AMOAQREgj1og3Z5kwO4+tcto+iqRCVU7W0o5eTVJw7tFg7Utzz+LMdDc+w+verBvd257qTxPfNNv6iW4xbfySXV18WFWWrtAeU112OSXoxWZcDjbBBiVO9RQm+fYXMnpzeIzS92a3ZCWkOd+Mh4dbbE99+1hX3dFCsBBDJnztGsXtd6dKs4bBNysMyPUgKprBxMqB2QBoIglq3mRtMtG15vFOMzRNrVZ58eEgmv5q1/ZXDMIOIHpRd4sQyMUd17VfSQw9fGtjThhD6K+KRpKaEQb/8ouVzBeU1XUcUP4C0KGS6ujb06Y7fEEq/2BCdsXmJP24KTtN/UZimUeaagFbxEIfL3izeieEO1mGfODEO83DOgk4bAhGi8ZR/SgPgnktDrSk1SsBBadRYP2vDYbRj0nP+79SF3IoFpsbqG56ck2cX09gzIcXtSAgVt2XkXjzLDzjEy0LKZHl7jdeXUx9IkzQ+XwxqgtUpTV34BLFUryrXlSWnl7F1tE6MqAEjVrvPKVa6mXNLqYsjcGTn8XT4WoAxyV10TKguqq/QGeMWBhBppsBO3+eeRtAPGm7lwnvHBNxGryxHR2wOdeHV7Hw/o4tQJO5CE7g+74CdVRqZCribtjRjhIp3EpXem5RFDkf6e+VI4v3GSowzGgAQ9n+LBOU26VvT8uBKs0="
+  - LTD_MASON_BUILD=false
+  - LTD_MASON_PRODUCT="dmtn-112"
+  - secure: rC++fQSBTe+4jNWEiNpF2y0iaYvjgYYc6HqgOK0qFVtNksbTTPjmYSQGmK82BM+9Eimupx3odVXtGrMkLvezQKmW/ri8Q+ts8G7OfldXFGPmTPz4wMPGQXbgd4G/19Ye9wnXNzir/rOflz6z6QDemajODpPDKwCgFE3+McGqHobLZd+/4TG8XmNrcM8/Q94ojCvkBadRn5JdfHu2SR0HnB1EcWJfoQq/VAEsAB1piJzBRcZY2NYYrYcW8s/HZdVeoImVM0revVohVaM+RIDC0yhGYEW7StTX/G29A4LKJKY9ITN4jvbpdXO6OhHstsMSagsmBS9dYKv8na/ZmgoIQNsMS4t0N/3xEGf3wapJPp8FgLtVEzxQ4WyR/UL2fQPlIabJF3E5czGSkphfU3fmI6hDJCZ1OZ9XWRNSShEKX8Vuoe5lIkZYMWZd5V629iM8UR3aL8ryDw2nsVM3LMbYAb45H8wcI+BMeXw3oVpN4mOKmFPzA9UxxYgRtBdcefzA7m0J5BtHHeCFw0iK9ef6jm0g8RFMoWJFRlebo+dnkDOHcI3ssL6ES77NThuKu5+mQvKlLmCsC1y6sT5nE/XiXXuT5dJLeDFfYNsMkn4XJozdCyGF/ERu4OvW8CjPtodo1i7a2kiU1eUuz9Q/Ye1Npnh2Yqyao9nVSpUX4kjzoPc=
+  - secure: IbbwznV6FVh2oZEYllIWlhnaudE0VlaVAYrmc3Iqr4lIp+R6DmDL7RkIu5JUzYxdF3t6eUaGaKO64r6qS0oko9Abd8654HYzVfYq62mu6pF056XkwOamwQLr2IvxQlh0GK6ydEZutvhPjFf+Fzvnn7eCmv5Kzxu6vlO9zTxp1U51lvD7PobzPj99QZb3vfGTbW7OanB/0TlJ7ms4PfFN+uBBL2u8uRIlzoCDulwgbLOSFqQokYoBCKgF3XSvSK70ualefXNOjkESqRLq3gSgD0trdv0mIY9zOJpHSv88SVQrI0vEp9CisZjzkCRHHoKZ5QcZxRA9ehbhZNWPP3S380+lH1smRdR2x3j0JhW1q4ja7ZRSu34lqksfLp22wdwCvmh50wdxWNo7SXGu+SJijNKCvqtHj+4rDoK9MUxbVu3BNQPa4BQY1+Fl4P+tcqTuj0J5HdnPOxc7xpLx0v47Vv/bvkdQXdS2tfSA6M10JPH8f+dY4P6dAlEX74v7tkeN7/i+YucUQYhVu60VfqkL++YEY6BWIbe1yRQHRocxqdTHPfyH7o14pBMDR4y/MfvOiSn2ruUfyNcNMRKwITQTWVK/SRsjEORwHefIkFypsLzoD0OrFZ30pTKqGIyyIbrxjWdLn8LlRP83UtFX+4eZwYXZ5yfttQKvx5/BhSGv3rY=
