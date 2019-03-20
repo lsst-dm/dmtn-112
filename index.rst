@@ -80,12 +80,12 @@ top-level secret store (``secret/``) as follows:
 
 ``secret/:subsystem:/:team:/:category:/:instance:``
 
-As an example, secrets for the ``jupyterlabdemo.lsst.codes`` instance of
+As an example, secrets for the ``nublado.lsst.codes`` instance of
 the LSST Science Platform Notebook Aspect are stored in
-``secret/dm/square/nublado/jupyterlabdemo.lsst.codes``.  Within that
-secret path are ``hub``, ``proxy``, and ``tls`` folders, which each
+``secret/dm/square/nublado/nublado.lsst.codes``.  Within that
+secret path are ``hub`` and ``tls`` folders, which each
 contain a number of individual secrets,
-e.g. ``secret/dm/square/nublado/jupyterlabdemo.lsst.codes/hub/oauth_secret``.
+e.g. ``secret/dm/square/nublado/nublado.lsst.codes/hub/oauth_secret``.
 
 Tokens
 ======
