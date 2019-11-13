@@ -90,7 +90,7 @@ contain a number of individual secrets,
 e.g. ``secret/dm/square/nublado/nublado.lsst.codes/hub/oauth_secret``.
 
 The second use case is in conjunction with the `Kubernetes Vault Secrets
-Operator<https://github.com/ricoberger/vault-secrets-operator>`.  If
+Operator <https://github.com/ricoberger/vault-secrets-operator>`_.  If
 that is the use case, the secret paths should be organized as:
 
 ``secret/k8s_operator/:k8s_cluster_identifier:``
