@@ -95,7 +95,7 @@ that is the use case, the secret paths should be organized as:
 
 ``secret/k8s_operator/:k8s_cluster_identifier:``
 
-An example thereof would be ``secret/k8s_operator/ncsa-lsp-stable``.  In
+An example thereof would be ``secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu``.  In
 this case, the Vault Secrets Operator would have complete control over
 the secrets underneath that path, although we still advocate creating a
 structure out of some combination of namespace and functional role.
