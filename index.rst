@@ -75,8 +75,10 @@ administer the cluster.
 Taxonomy
 ========
 
-Our intention is for Vault to be organized with secret paths under the
-top-level secret store (``secret/``) as follows:
+There are two primary use cases for using Vault.  One is as a generic
+secret store.  In that case, our intention is for Vault to be organized
+with secret paths under the top-level secret store (``secret/``) as
+follows:
 
 ``secret/:subsystem:/:team:/:category:/:instance:``
 
@@ -86,6 +88,17 @@ the LSST Science Platform Notebook Aspect are stored in
 secret path are ``hub`` and ``tls`` folders, which each
 contain a number of individual secrets,
 e.g. ``secret/dm/square/nublado/nublado.lsst.codes/hub/oauth_secret``.
+
+The second use case is in conjunction with the `Kubernetes Vault Secrets
+Operator<https://github.com/ricoberger/vault-secrets-operator>`.  If
+that is the use case, the secret paths should be organized as:
+
+``secret/k8s_operator/:k8s_cluster_identifier:``
+
+An example thereof would be ``secret/k8s_operator/ncsa-lsp-stable``.  In
+this case, the Vault Secrets Operator would have complete control over
+the secrets underneath that path, although we still advocate creating a
+structure out of some combination of namespace and functional role.
 
 Tokens
 ======
