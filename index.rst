@@ -65,10 +65,12 @@ An installation of the Kubernetes Vault Secrets Operator will be given a ``read`
 Token Acquisition and Revocation
 ================================
 
-To acquire a token pair, ask Adam Thornton (``athornton@lsst.org``) (or any other SQuaRE personnel) to create a pair for your desired secret path.
+To acquire a token pair, ask `Russ Allbery`_ (or any other SQuaRE team member) to create a pair for your desired secret path.
 Assuming that the path is correctly-structured, he will give you a pair of tokens (both ``id`` and ``accessor``) for reading and writing to the secret path.
 
-To revoke or renew these tokens, indicate to Adam (or another SQuaRE team member) what path you want revoked or renewed, and (if revocation) whether the corresponding data should be deleted as well.
+.. _Russ Allbery: rra@lsst.org
+
+To revoke or renew these tokens, indicate to Russ (or another SQuaRE team member) what path you want revoked or renewed, and (if revocation) whether the corresponding data should be deleted as well.
 
 Administrative Tools
 ====================
