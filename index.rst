@@ -2,7 +2,7 @@
 
 .. sectnum::
 
-Location and basic usage
+Location and Basic Usage
 ========================
 
 LSST Data Management maintains an instance of Hashicorp's Vault product at `vault.lsst.codes <https://vault.lsst.codes/>`_.
