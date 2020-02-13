@@ -72,6 +72,7 @@ Each secret path will have two tokens created: ``read`` and ``write``.
 The ``read`` token can view but not alter data, while the ``write`` token can create, update, or delete data within the secret path.
 
 An installation of the Kubernetes Vault Secrets Operator will be given a ``read`` token for the entire ``secret/k8s_operator/:k8s_cluster_identifier:`` path for that Kubernetes cluster.
+(In the future, we may replace this with Kubernetes authentication for the case of a Vault Secrets Operator running in the same cluster as Vault itself.)
 
 Token Acquisition and Revocation
 ================================
