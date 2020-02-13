@@ -33,23 +33,23 @@ Taxonomy
 
 There are two primary use cases for using Vault.
 One is as a generic secret store.
-In that case, our intention is for Vault to be organized with secret paths under the top-level secret store (``secret/``) as follows:
+In that case, our intention is for Vault to be organized with secret paths under the top-level secret store (``secret/``) as follows::
 
-``secret/:subsystem:/:team:/:category:/:instance:``
+    secret/:subsystem:/:team:/:category:/:instance:
 
 As an example, secrets for the ``nublado.lsst.codes`` instance of the LSST Science Platform Notebook Aspect are stored in ``secret/dm/square/nublado/nublado.lsst.codes``.
 Within that secret path are ``hub`` and ``tls`` folders, which each contain a number of individual secrets, e.g. ``secret/dm/square/nublado/nublado.lsst.codes/hub/oauth_secret``.
 
 The second use case is in conjunction with the Kubernetes `Vault Secrets Operator`_.
-If that is the use case, the secret paths should be organized as:
+If that is the use case, the secret paths should be organized as::
 
-``secret/k8s_operator/:k8s_cluster_identifier:``
+    secret/k8s_operator/:k8s_cluster_identifier:
 
 An example thereof would be ``secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu``.
 In this case, the owner of the relevant Kubernetes cluster may choose how to organize secrets under that path.
-However, we recommend using a similar structure of:
+However, we recommend using a similar structure of::
 
-``secret/k8s_operator/:k8s_cluster_identifier:/:subsystem:/:team:/:application:``
+    secret/k8s_operator/:k8s_cluster_identifier:/:subsystem:/:team:/:application:
 
 For example, the secret for a SQuaRE microservice named ``uservice-ghslacker`` deployed to Roundtable would be named ``secret/k8s_operator/roundtable/dm/square/uservice-ghslacker``.
 If the application required more than one secret, that would instead be a folder containing multiple secrets.
