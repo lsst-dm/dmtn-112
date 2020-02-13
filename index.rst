@@ -28,6 +28,17 @@ This is configured via Kubernetes ``VaultSecret`` resources.
 
 .. _Vault Secrets Operator: https://github.com/ricoberger/vault-secrets-operator
 
+HashiCorp provides a `Vault Agent Injector`_ as an alternate way to integrate Kubernetes workloads with Vault.
+We considered using this instead of Vault Secrets Operator primarily because HashiCorp supports it, but decided against it for several reasons:
+
+.. _Vault Agent Injector: https://www.vaultproject.io/docs/agent/
+
+#. Vault Secrets Operator allows us to generate one Vault token per Kubernetes cluster that has read access to all secrets for that cluster.
+   Vault Agent Injector requires either configuring tokens per service or requires configuring Kubernetes or GCP authentication to Vault, both of which are more complex.
+#. Vault Secrets Operator exposes the secrets as Kubernetes secrets, which allows for easy interoperability with Helm charts and other resources that expect Kubernetes secrets.
+   Vault Agent Injector creates a separate local file system, which applications then have to be configured to use.
+#. Injecting sidecars can cause problems and complexity with some Kubernetes workloads that don't interact well with sidecar processes.
+
 Taxonomy
 ========
 
