@@ -3,21 +3,22 @@
 # document in git and kept up to date.
 
 # The series identifier. E.g. SQR, DMTN, SMTN, LDM, LSE, etc.
-series: 'DMTN'
+series: "DMTN"
 
 # Document number, as a string. It should be three digits, padded with leading zeros
-serial_number: '112'
+serial_number: "112"
 
 # Serial number of the document. E.g. SQR-001
 # NOTE: this field is *planned* for deprecation
-doc_id: 'DMTN-112'
+doc_id: "DMTN-112"
 
 # Title of the document, without the series/serial designation
-doc_title: 'LSST DM Vault'
+doc_title: "LSST DM Vault"
 
 # Author names, ordered as a list. Each author name should be formatted as 'First Last'
 authors:
-    - 'Adam Thornton'
+  - "Adam Thornton"
+  - "Russ Allbery"
 
 # Current document revision date, YYYY-MM-DD
 # Only set this field if you need to manually fix the revision date;
@@ -34,10 +35,10 @@ authors:
 # doi: 10.5281/zenodo.#####
 
 # Copyright statement
-copyright: '2019, Association of Universities for Research in Astronomy'
+copyright: "2019-2020, Association of Universities for Research in Astronomy, Inc. (AURA)"
 
 # Description. A short, 1-2 sentence statemement used by document indices.
-description: 'A brief description of the LSST DM Vault'
+description: "A brief description of the LSST DM Vault"
 
 # Abstract, if available
 # abstract: >
@@ -47,11 +48,11 @@ description: 'A brief description of the LSST DM Vault'
 #           You can have multiple paragraphs too.
 
 # URL where this document is published by Read the Docs. e.g. http://sqr-001.lsst.codes
-url: 'https://dmtn-112.lsst.io'
+url: "https://dmtn-112.lsst.io"
 
 # LSST Docushare URL, if authoritative versions of this are are stored there.
 # Leave as an empty string or comment out this key if there is no Docushare URL.
-docushare_url: ''
+docushare_url: ""
 
 # GitHub repo URL
-github_url: 'https://github.com/lsst-sqre/dmtn-112'
+github_url: "https://github.com/lsst-sqre/dmtn-112"
