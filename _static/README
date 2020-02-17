@@ -6,3 +6,6 @@ _static/ directory. The reST syntax for adding the image is
     :target: http://target.link/url
 
     Caption text.
+
+To regenerate vault.png, run python vault.py.  At some point this should
+be automated as part of the document build process.
