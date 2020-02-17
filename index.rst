@@ -20,6 +20,11 @@ It is deployed using the standard HashiCorp `Vault Helm chart <https://www.vault
 The server uses Let's Encrypt certificates and does not require client certificate authentication.
 See the `operational documentation <https://roundtable.lsst.io/ops/vault/index.html>`__ for more information.
 
+.. figure:: /_static/vault.png
+   :name: Roundtable Vault deployment
+
+   Roundtable Vault deployment
+
 In the future, we may separate the Vault instance for production services running at the LDF from the Roundtable Vault for other supporting services and test environments.
 
 Each Kubernetes cluster that uses Vault to store secrets has one instance of the Kubernetes `Vault Secrets Operator`_ deployed in the cluster.
