@@ -47,28 +47,36 @@ We considered using this instead of Vault Secrets Operator primarily because Has
 Taxonomy
 ========
 
-There are two primary use cases for using Vault.
-One is as a generic secret store.
+There are two major use cases for employing Vault.
+
+The primary, and preferred, use case is in conjunction with the Kubernetes `Vault Secrets Operator`_.
+If that is the use case, the secret paths should be organized as::
+
+    secret/k8s_operator/:k8s_cluster_fqdn:
+
+An example thereof would be
+``secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu``.  In this
+case, the owner of the relevant Kubernetes cluster may choose how to
+organize secrets under that path.  We recommend using a structure
+like::
+
+    secret/k8s_operator/:k8s_cluster_fqdn:/:application:
+
+For example, the secret for a SQuaRE microservice named ``uservice-ghslacker`` deployed to Roundtable would be named ``secret/k8s_operator/roundtable.lsst.codes/uservice-ghslacker``.
+If the application required more than one secret, that would instead be
+a folder containing multiple secrets.
+
+The second use case is as a generic secret store.
+
 In that case, our intention is for Vault to be organized with secret paths under the top-level secret store (``secret/``) as follows::
 
     secret/:subsystem:/:team:/:category:/:instance:
 
-As an example, secrets for the ``nublado.lsst.codes`` instance of the LSST Science Platform Notebook Aspect are stored in ``secret/dm/square/nublado/nublado.lsst.codes``.
-Within that secret path are ``hub`` and ``tls`` folders, which each contain a number of individual secrets, e.g. ``secret/dm/square/nublado/nublado.lsst.codes/hub/oauth_secret``.
+For instance::
 
-The second use case is in conjunction with the Kubernetes `Vault Secrets Operator`_.
-If that is the use case, the secret paths should be organized as::
+    secret/dm/square/credentials/github.com
 
-    secret/k8s_operator/:k8s_cluster_identifier:
-
-An example thereof would be ``secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu``.
-In this case, the owner of the relevant Kubernetes cluster may choose how to organize secrets under that path.
-However, we recommend using a similar structure of::
-
-    secret/k8s_operator/:k8s_cluster_identifier:/:subsystem:/:team:/:application:
-
-For example, the secret for a SQuaRE microservice named ``uservice-ghslacker`` deployed to Roundtable would be named ``secret/k8s_operator/roundtable/dm/square/uservice-ghslacker``.
-If the application required more than one secret, that would instead be a folder containing multiple secrets.
+The Vault Secrets Operator use case is greatly preferred.
 
 Tokens
 ======
@@ -76,7 +84,7 @@ Tokens
 Each secret path will have two tokens created: ``read`` and ``write``.
 The ``read`` token can view but not alter data, while the ``write`` token can create, update, or delete data within the secret path.
 
-An installation of the Kubernetes Vault Secrets Operator will be given a ``read`` token for the entire ``secret/k8s_operator/:k8s_cluster_identifier:`` path for that Kubernetes cluster.
+An installation of the Kubernetes Vault Secrets Operator will be given a ``read`` token for the entire ``secret/k8s_operator/:k8s_cluster_fqdn:`` path for that Kubernetes cluster.
 (In the future, we may replace this with Kubernetes authentication for the case of a Vault Secrets Operator running in the same cluster as Vault itself.)
 
 Token Acquisition and Revocation
