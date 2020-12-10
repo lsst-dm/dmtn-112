@@ -104,7 +104,6 @@ Administrative tools for working with Vault can be found at the `LSST Vault Util
 
 Without an administrative token (limited to SQuaRE team members), you will not be able to use the ``tokenadmin`` tool, which is the tool by which token issuance and revocation is managed.
 
-However, with ``read`` and ``write`` tokens you can use ``copyk2v`` and ``copyv2k`` to copy secrets back and forth between Kubernetes secrets and the Vault implementation.
-(That said, you should generally use a ``VaultSecret`` resource and let Vault Secrets Operator create Kubernetes secrets for you, rather than using the ``copyv2k`` tool.)
+With multiple write tokens for different paths, you can use the ``multisecret`` tool to add a secret to the same relative path across multiple vault secrets paths.
 
 With a write token you will also be able to use ``vaultrmrf``, which is exactly as dangerous as it sounds.
